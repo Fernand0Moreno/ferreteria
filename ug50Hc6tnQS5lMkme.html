@@ -1,0 +1,483 @@
+<html><head><base href="https://dcmetales.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC Metales - Ferretería Moderna</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<style>
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f5f6fa;
+    --text-color: #34495e;
+    --card-background: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  nav {
+    background-color: var(--card-background);
+    padding: 10px 0;
+    box-shadow: var(--shadow);
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 15px;
+  }
+
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  .login-form, .order-list {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: var(--shadow);
+  }
+
+  .login-form h2, .order-list h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    text-align: center;
+  }
+
+  .login-form input,
+  .login-form select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .login-form button,
+  .order-list button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-form button:hover,
+  .order-list button:hover {
+    background-color: #27ae60;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 30px 0;
+  }
+
+  .product-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .product-card h3 {
+    margin: 15px 0 10px;
+    color: var(--primary-color);
+  }
+
+  .product-card button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .product-card button:hover {
+    background-color: #27ae60;
+  }
+
+  .cart {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 300px;
+  }
+
+  .cart h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  #profileForm input,
+  #orderNumber {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  #profileForm button,
+  #trackOrder {
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  #profileForm button:hover,
+  #trackOrder:hover {
+    background-color: #27ae60;
+  }
+
+  .order-item {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+  }
+
+  .order-item h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  .order-item p {
+    margin: 5px 0;
+  }
+
+  .order-item select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .order-item button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .order-item button:hover {
+    background-color: #27ae60;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-tools"></i> DC Metales</h1>
+  </header>
+  
+  <div id="loginContainer" class="container">
+    <form class="login-form" id="loginForm">
+      <h2><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h2>
+      <input type="text" id="username" placeholder="Nombre de usuario" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <select id="role" required>
+        <option value="">Seleccionar Rol</option>
+        <option value="admin">Administrador</option>
+        <option value="client">Cliente</option>
+        <option value="employee">Empleado</option>
+        <option value="provider">Proveedor</option>
+      </select>
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <div id="mainContent" style="display: none;">
+    <nav>
+      <ul>
+        <li><a href="#products"><i class="fas fa-box-open"></i> Productos</a></li>
+        <li><a href="#profile"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="#orders"><i class="fas fa-truck"></i> Rastrear Pedido</a></li>
+        <li><a href="#orderList"><i class="fas fa-list-alt"></i> Lista de Pedidos</a></li>
+        <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div id="products">
+        <h2><i class="fas fa-box-open"></i> Productos</h2>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+
+      <div id="profile" style="display: none;">
+        <h2><i class="fas fa-user"></i> Perfil de Usuario</h2>
+        <form id="profileForm">
+          <input type="text" id="fullName" placeholder="Nombre completo">
+          <input type="email" id="email" placeholder="Correo electrónico">
+          <input type="tel" id="phone" placeholder="Teléfono">
+          <button type="submit">Actualizar Perfil</button>
+        </form>
+      </div>
+
+      <div id="orders" style="display: none;">
+        <h2><i class="fas fa-truck"></i> Rastrear Pedido</h2>
+        <input type="text" id="orderNumber" placeholder="Número de pedido">
+        <button id="trackOrder">Rastrear</button>
+        <div id="orderStatus"></div>
+      </div>
+
+      <div id="orderList" style="display: none;" class="order-list">
+        <h2><i class="fas fa-list-alt"></i> Lista de Pedidos</h2>
+        <div id="orderItems"></div>
+      </div>
+    </div>
+
+    <div class="cart" id="cart">
+      <h3><i class="fas fa-shopping-cart"></i> Carrito</h3>
+      <ul id="cartItems"></ul>
+      <p>Total: $<span id="cartTotal">0</span></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let currentUser = null;
+      let cart = [];
+
+      // Productos de ejemplo
+      const products = [
+        { id: 1, name: "Martillo Profesional", price: 29.99, image: "martillo_pro.jpg" },
+        { id: 2, name: "Set de Destornilladores", price: 19.99, image: "destornilladores_set.jpg" },
+        { id: 3, name: "Sierra Eléctrica", price: 89.99, image: "sierra_electrica.jpg" },
+        { id: 4, name: "Taladro Inalámbrico", price: 129.99, image: "taladro_inalambrico.jpg" },
+        { id: 5, name: "Juego de Llaves", price: 49.99, image: "juego_llaves.jpg" },
+        { id: 6, name: "Cinta Métrica Digital", price: 24.99, image: "cinta_metrica_digital.jpg" }
+      ];
+
+      // Pedidos de ejemplo
+      let orders = [
+        { id: 1, products: ["Martillo Profesional", "Set de Destornilladores"], status: "En proceso", date: "2023-05-01" },
+        { id: 2, products: ["Sierra Eléctrica"], status: "Enviado", date: "2023-05-02" },
+        { id: 3, products: ["Taladro Inalámbrico", "Juego de Llaves"], status: "Entregado", date: "2023-05-03" }
+      ];
+
+      // Login
+      $("#loginForm").submit(function(e) {
+        e.preventDefault();
+        const username = $("#username").val();
+        const password = $("#password").val();
+        const role = $("#role").val();
+
+        if (username && password && role) {
+          currentUser = { username, role };
+          $("#loginContainer").hide();
+          $("#mainContent").show();
+          loadProducts();
+          loadOrders();
+        } else {
+          alert("Por favor, complete todos los campos.");
+        }
+      });
+
+      // Logout
+      $("#logoutBtn").click(function() {
+        currentUser = null;
+        cart = [];
+        updateCart();
+        $("#mainContent").hide();
+        $("#loginContainer").show();
+      });
+
+      // Cargar productos
+      function loadProducts() {
+        const productGrid = $("#productGrid");
+        productGrid.empty();
+
+        products.forEach(product => {
+          const productCard = $(`
+            <div class="product-card">
+              <img src="${product.image}" alt="${product.name}" width="200" height="200">
+              <h3>${product.name}</h3>
+              <p>$${product.price.toFixed(2)}</p>
+              <button class="add-to-cart" data-id="${product.id}">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+              </button>
+            </div>
+          `);
+          productGrid.append(productCard);
+        });
+      }
+
+      // Cargar pedidos
+      function loadOrders() {
+        const orderItems = $("#orderItems");
+        orderItems.empty();
+
+        orders.forEach(order => {
+          const orderItem = $(`
+            <div class="order-item">
+              <h3>Pedido #${order.id}</h3>
+              <p>Productos: ${order.products.join(", ")}</p>
+              <p>Fecha: ${order.date}</p>
+              <p>Estado: 
+                <select class="order-status" data-id="${order.id}">
+                  <option value="En proceso" ${order.status === "En proceso" ? "selected" : ""}>En proceso</option>
+                  <option value="Enviado" ${order.status === "Enviado" ? "selected" : ""}>Enviado</option>
+                  <option value="Entregado" ${order.status === "Entregado" ? "selected" : ""}>Entregado</option>
+                </select>
+              </p>
+              <button class="update-order" data-id="${order.id}">Actualizar Estado</button>
+            </div>
+          `);
+          orderItems.append(orderItem);
+        });
+      }
+
+      // Actualizar estado del pedido
+      $(document).on("click", ".update-order", function() {
+        const orderId = $(this).data("id");
+        const newStatus = $(this).siblings("p").find(".order-status").val();
+        const order = orders.find(o => o.id === orderId);
+        if (order) {
+          order.status = newStatus;
+          alert(`Estado del pedido #${orderId} actualizado a: ${newStatus}`);
+        }
+      });
+
+      // Agregar al carrito
+      $(document).on("click", ".add-to-cart", function() {
+        const productId = $(this).data("id");
+        const product = products.find(p => p.id === productId);
+        if (product) {
+          cart.push(product);
+          updateCart();
+        }
+      });
+
+      // Actualizar carrito
+      function updateCart() {
+        const cartItems = $("#cartItems");
+        const cartTotal = $("#cartTotal");
+        cartItems.empty();
+
+        let total = 0;
+        cart.forEach(item => {
+          cartItems.append(`<li>${item.name} - $${item.price.toFixed(2)}</li>`);
+          total += item.price;
+        });
+
+        cartTotal.text(total.toFixed(2));
+      }
+
+      // Navegación
+      $("nav a").click(function(e) {
+        e.preventDefault();
+        const target = $(this).attr("href");
+        $(".container > div").hide();
+        $(target).show();
+      });
+
+      // Actualizar perfil
+      $("#profileForm").submit(function(e) {
+        e.preventDefault();
+        alert("Perfil actualizado con éxito.");
+      });
+
+      // Rastrear pedido
+      $("#trackOrder").click(function() {
+        const orderNumber = $("#orderNumber").val();
+        if (orderNumber) {
+          const order = orders.find(o => o.id === parseInt(orderNumber));
+          if (order) {
+            $("#orderStatus").html(`
+              <h3>Pedido #${order.id}</h3>
+              <p>Productos: ${order.products.join(", ")}</p>
+              <p>Fecha: ${order.date}</p>
+              <p>Estado: ${order.status}</p>
+            `);
+          } else {
+            $("#orderStatus").text("Pedido no encontrado.");
+          }
+        } else {
+          alert("Por favor, ingrese un número de pedido.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
